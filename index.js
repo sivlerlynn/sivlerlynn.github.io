@@ -1,1 +1,1 @@
-var a="document."
+var a="document.get"
