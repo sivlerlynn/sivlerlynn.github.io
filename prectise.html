@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        html,body{
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var w=document.body.clientWidth
+var h=document.body.clientHeight
+var arr=[]
+for(var i=0;i<15;i++)
+{
+var ball=document.createElement('div')
+randomSize=Math.random()*300
+ball.style.width=randomSize+'px'
+ball.style.height=randomSize+'px'
+ball.style.background='hsl('+Math.random()*360+',50%,60%)'
+ball.style.borderRadius='50%'
+ball.style.position='absolute'
+ball.style.left=Math.random()*(w-300)+'px'
+ball.style.top=Math.random()*(h-300)+'px'
+document.body.appendChild(ball)
+arr.push(ball)
+}
+var directX=1
+var directY=1
+function move()
+{
+    for(var i=0;i<arr.length;i++)
+    {
+    var ball=arr[i]
+    if(ball.offsetLeft+ball.offsetWidth>=w)
+    {directX=-1}
+    if(ball.offsetLeft<=0)
+    {directX=1}
+    if(ball.offsetTop+ball.offsetHeight>=w)
+    {directY=-1}
+    if(ball.offsetLeft<=0)
+    {directY=1}
+ball.style.left=ball.offsetLeft+directX+'px'
+ball.style.top=ball.offsetTop+directY+'px'
+}
+requestAnimationFrame(move)
+}
+move()
+    </script>
+</body>
+</html>
